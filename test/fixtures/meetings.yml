@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  room: one
+  start_time: 2017-11-08 11:45:12
+  end_time: 2017-11-08 11:45:12
+
+two:
+  user: two
+  room: two
+  start_time: 2017-11-08 11:45:12
+  end_time: 2017-11-08 11:45:12

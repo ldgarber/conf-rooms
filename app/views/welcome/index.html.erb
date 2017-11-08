@@ -1,0 +1,11 @@
+<%= month_calendar events: @meetings do |date, meetings| %> 
+  <%= date.strftime("%d") %>
+
+  <% meetings.each do |meeting| %> 
+    <div class="meeting-room-<%=meeting.room.id%>">
+      <%= meeting.room.name %> 
+      booked by <%= (meeting.user.name != nil) ? meeting.user.name : meeting.user.email %>
+      from <%= meeting.start %> to <%= meeting.end %> 
+    </div> 
+  <% end %> 
+<% end %> 
