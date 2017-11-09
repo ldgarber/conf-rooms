@@ -1,4 +1,5 @@
 .simple-calendar {
+  background: #fff; 
   table {
     -webkit-border-horizontal-spacing: 0px;
     -webkit-border-vertical-spacing: 0px;
@@ -77,6 +78,7 @@
   .has-events {}
  
   .calendar-heading {
+    padding-top: 20px; 
     padding-bottom: 20px;
     a {
       font-size: 13px; 
@@ -96,14 +98,14 @@
   }
    
   .meeting-room-1 {
-    background-color: red;  
+    background-color: #95d1b4;  
   } 
 
   .meeting-room-2 {
-    background-color: green;  
+    background-color: #fae66f;  
   }
 
   .meeting-room-3 {
-    background-color: pink;   
+    background-color: #58c5d9;   
   }
 }

@@ -34,9 +34,21 @@ class Meeting < ApplicationRecord
   end
 
   def overlapping_meetings(start_date, end_date, meetings) 
-    meetings.collect { |meeting|  
-      (start_date...end_date).overlaps?(meeting.time_range) 
-    } 
+    #returns array of meetings where the start_date or end_date overlap
+    new_range = start_date...end_date
+    result = []
+    meetings.each do |meeting| 
+      if start_date.in?(meeting.time_range) 
+        result << meeting
+      elsif end_date.in?(meeting.time_range)
+        result << meeting
+      elsif meeting.start_date.in?(new_range)
+        result << meeting
+      elsif meeting.end_date.in?(new_range)
+        result << meeting 
+      end
+    end
+    return result
   end
 
   def time_range
@@ -47,4 +59,5 @@ class Meeting < ApplicationRecord
   def self.meetings_in_room(room_id)
     Meeting.all.select{ |meeting| meeting.room_id == room_id }
   end
+
 end

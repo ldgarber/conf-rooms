@@ -29,7 +29,7 @@ a {
 
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: #58c5d9;
   }
 }
 
@@ -47,6 +47,12 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+.centered {
+  margin: 0 auto; 
+  width: auto; 
+  text-align: center; 
 }
 
 #notice {
@@ -87,3 +93,12 @@ div {
 label {
   display: block;
 }
+
+.radio-spacing {
+  margin: 5px; 
+  padding: 10px; 
+  padding-right: 15px; 
+  border: 1px solid black;  
+}
+
+

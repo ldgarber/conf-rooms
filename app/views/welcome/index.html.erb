@@ -1,3 +1,9 @@
+<div class="container">
+  <div class="centered">
+    <h1>Happy Fun Conference Rooms!</h1>
+    <%= link_to "BOOK A ROOM", new_meeting_path, class: "btn btn-outline-secondary btn-lg" %>
+  </div>
+</div>
 <%= month_calendar events: @meetings do |date, meetings| %> 
   <%= date.strftime("%d") %>
 
