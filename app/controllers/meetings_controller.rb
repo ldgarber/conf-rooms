@@ -5,6 +5,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   def new
     @meeting = Meeting.new
+    @meetings = Meeting.all
   end
 
   # GET /meetings/1/edit

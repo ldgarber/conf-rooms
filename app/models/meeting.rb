@@ -20,7 +20,7 @@ class Meeting < ApplicationRecord
     mtgs = Meeting.meetings_in_room(room_id)
     filtered = overlapping_meetings(start_time, end_time, mtgs)
     if (filtered.length > 0) 
-      errors.add(:room_id, "is already booked in this date range") 
+      errors.add(:room_id, "is already booked in this time range") 
     end
   end
 
@@ -29,22 +29,21 @@ class Meeting < ApplicationRecord
     filtered = overlapping_meetings(start_time, end_time, mtgs)
     remove_self = remove_self(id, filtered)
     if (filtered.length > 0) 
-      errors.add(:room_id, "is already booked in this date range") 
+      errors.add(:room_id, "is already booked in this range") 
     end
   end
 
   def overlapping_meetings(start_date, end_date, meetings) 
     #returns array of meetings where the start_date or end_date overlap
-    new_range = start_date...end_date
     result = []
     meetings.each do |meeting| 
-      if start_date.in?(meeting.time_range) 
+      if start_date.between?(meeting.start_time, meeting.end_time) 
         result << meeting
-      elsif end_date.in?(meeting.time_range)
+      elsif end_date.between?(meeting.start_time, meeting.end_time)
         result << meeting
-      elsif meeting.start_date.in?(new_range)
+      elsif meeting.start_time.between?(start_date, end_date)
         result << meeting
-      elsif meeting.end_date.in?(new_range)
+      elsif meeting.end_time.between?(start_date, end_date)
         result << meeting 
       end
     end
