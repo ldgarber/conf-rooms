@@ -11,13 +11,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- bootstrap datepicker --> 
+    <!-- bootstrap datepicker 
     <link rel="stylesheet" href="/path/to/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    -->
 
   </head>
 
   <body>
-    <div class="container centered">
+    <div class="container centered" >
+      <!-- flash messages --> 
+      <%= render "layouts/flash_messages" if !flash.empty? %> 
+
+
        <%= yield %>
     </div>
   </body>

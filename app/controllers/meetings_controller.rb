@@ -1,6 +1,7 @@
 class MeetingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   # GET /meetings/new
   def new
@@ -61,5 +62,12 @@ class MeetingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
       params.require(:meeting).permit(:user_id, :room_id, :start_time, :end_time)
+    end
+
+    def require_permission 
+      if current_user != Meeting.find(params[:id]).user 
+        flash[:danger] = "You can't update a meeting you didn't book."
+        redirect_to root_path
+      end
     end
 end
