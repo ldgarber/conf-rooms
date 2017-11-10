@@ -34,6 +34,25 @@ a {
   }
 }
 
+.meeting-link {
+  color: black;
+
+  &:visited {
+    color: black;
+  }
+
+  &:hover {
+    color: black;
+    text-decoration: underline; 
+    div {
+    }
+  }
+}
+
+.book-room-link {
+  color: black; 
+}
+
 th {
   padding-bottom: 5px;
 }
