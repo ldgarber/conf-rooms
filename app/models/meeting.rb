@@ -2,6 +2,7 @@ class Meeting < ApplicationRecord
   belongs_to :user
   belongs_to :room
   validate :room_cannot_be_booked_for_that_time, :on => :create
+  validate :end_time_is_later_than_start_time
 
   def start 
     convert_time(self.start_time)
@@ -14,6 +15,12 @@ class Meeting < ApplicationRecord
   def convert_time(datetime)
     est_time = datetime.in_time_zone("Eastern Time (US & Canada)")
     return est_time.strftime("%I:%M%p")
+  end
+
+  def end_time_is_later_than_start_time
+    if !(end_time > start_time) 
+      errors.add(:end_time, "must be later than start time")
+    end
   end
 
   def room_cannot_be_booked_for_that_time
