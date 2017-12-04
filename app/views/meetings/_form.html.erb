@@ -46,7 +46,7 @@
 
   <div class="field">
     <%= f.label :end_time %>
-    <%= f.datetime_select :end_time %>
+    <%= f.datetime_select :end_time, default: DateTime.now + 1.minute %>
   </div>
 
 
