@@ -23,7 +23,7 @@ class MeetingsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Meeting was successfully created.' }
         format.json { render :show, status: :created, location: @meeting }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Meeting was not created.' }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
     end
