@@ -37,7 +37,7 @@ class MeetingsController < ApplicationController
         format.html { redirect_to root_path, flash: {success: 'Meeting was successfully updated.'} } 
         format.json { render :show, status: :ok, location: @meeting }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_meeting_path, flash: {danger: "Unable to edit meeting. " + @meeting.errors.full_messages.join('. ')} }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
     end
