@@ -1,7 +1,7 @@
 class Meeting < ApplicationRecord
   belongs_to :user
   belongs_to :room
-  validate :room_cannot_be_booked_for_that_time, :on => :create
+  validate :room_cannot_be_booked_for_that_time
   validate :end_time_is_later_than_start_time
 
   def start 
@@ -23,6 +23,7 @@ class Meeting < ApplicationRecord
     end
   end
 
+  # does not work for update yet!!!! 
   def room_cannot_be_booked_for_that_time
     mtgs = Meeting.meetings_in_room(room_id)
     filtered = overlapping_meetings(start_time, end_time, mtgs)
