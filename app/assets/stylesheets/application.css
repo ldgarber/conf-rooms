@@ -19,3 +19,5 @@
 
 .alert-notice { @extend .alert-info; }
 .alert-error { @extend .alert-danger; } 
+
+.body-container { padding-top: 70px; }

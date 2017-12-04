@@ -1,0 +1,10 @@
+<li class="dropdown">
+  <a class="dropdown-toggle navbar-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as <%= current_user.email %><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/users/sign_out" data-method="delete">Sign Out</a></li>
+  </ul>
+</li>
+

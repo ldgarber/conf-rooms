@@ -1,6 +1,7 @@
 class Meeting < ApplicationRecord
   belongs_to :user
   belongs_to :room
+  validates_presence_of :start_time, :end_time
   validate :room_cannot_be_booked_for_that_time
   validate :end_time_is_later_than_start_time
 
