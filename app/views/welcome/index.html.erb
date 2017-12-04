@@ -4,6 +4,7 @@
     <%= link_to "BOOK A ROOM", new_meeting_path, class: "btn btn-outline-secondary btn-lg book-room-link" %>
   </div>
 </div>
+
 <%= month_calendar events: @meetings do |date, meetings| %> 
   <%= date.strftime("%d") %>
 
@@ -11,9 +12,9 @@
     <% if user_signed_in? && (meeting.user == current_user) %> 
       <%= link_to edit_meeting_path(meeting), class: "meeting-link" do %>
         <div class="meeting-room-<%=meeting.room.id%>">
-          <%= meeting.room.name %> 
-          booked by you (<%= (meeting.user.name != nil) ? meeting.user.name : meeting.user.email %>)
-          from <%= meeting.start %> to <%= meeting.end %> 
+           <%= meeting.room.name %> 
+           booked by you (<%= (meeting.user.name != nil) ? meeting.user.name : meeting.user.email %>)
+           from <%= meeting.start %> to <%= meeting.end %> 
         </div> 
       <% end%> 
     <% else %> 

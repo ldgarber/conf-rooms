@@ -7,11 +7,6 @@
   <%= link_to 'Back', root_path %>
   </div>
 
-  <div>
-    <a data-target="#calendar-toggle" class="btn btn-primary" data-toggle="collapse">Show/Hide Calendar</a>
-    <div id="calendar-toggle" class="collapse">
-      <%= render 'shared/calendar', meetings: @meetings %> 
-    </div>
-  </div>
+  <!%= render "shared/calendar_toggle", meetings: @meetings %> 
 
 </div>
