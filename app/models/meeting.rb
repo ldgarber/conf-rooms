@@ -26,45 +26,32 @@ class Meeting < ApplicationRecord
   # does not work for update yet!!!! 
   def room_cannot_be_booked_for_that_time
     mtgs = Meeting.meetings_in_room(room_id)
-    filtered = overlapping_meetings(start_time, end_time, mtgs)
-    if (filtered.length > 0) 
-      errors.add(:room_id, "is already booked in this time range") 
-    end
+    mtgs = remove_self(mtgs)
+    errors.add(:room_id, "is already booked in this time range")  if any_overlapping_meetings?(mtgs)
   end
 
-  def updated_room_cannot_be_booked
-    mtgs = Meeting.meetings_in_room(room_id)
-    filtered = overlapping_meetings(start_time, end_time, mtgs)
-    remove_self = remove_self(id, filtered)
-    if (filtered.length > 0) 
-      errors.add(:room_id, "is already booked in this range") 
-    end
+  def any_overlapping_meetings?(mtgs)
+    overlapping_meetings(mtgs).length > 0
   end
 
-  def overlapping_meetings(start_date, end_date, meetings) 
+  def overlapping_meetings(meetings) 
     #returns array of meetings where the start_date or end_date overlap
-    result = []
-    meetings.each do |meeting| 
-      if start_date.between?(meeting.start_time, meeting.end_time) 
-        result << meeting
-      elsif end_date.between?(meeting.start_time, meeting.end_time)
-        result << meeting
-      elsif meeting.start_time.between?(start_date, end_date)
-        result << meeting
-      elsif meeting.end_time.between?(start_date, end_date)
-        result << meeting 
-      end
+    meetings.select do |meeting| 
+      meeting_overlaps?(self.start_time, self.end_time, meeting.start_time, meeting.end_time)
     end
-    return result
   end
 
-  def time_range
-    (self.start_time...self.end_time) 
+  def meeting_overlaps?(s1, e1, s2, e2)
+    return (s1 < e2) && (e1 > s2) 
+  end
+
+  def remove_self(meetings)
+    meetings.reject {|meeting| meeting.id == self.id}
   end
 
   #returns array of meetings that belong to specified id  
   def self.meetings_in_room(room_id)
-    Meeting.all.select{ |meeting| meeting.room_id == room_id }
+    Meeting.all.select{ |meeting| (meeting.room_id == room_id) }
   end
 
 end
