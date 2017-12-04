@@ -34,7 +34,7 @@ class MeetingsController < ApplicationController
   def update
     respond_to do |format|
       if @meeting.update(meeting_params)
-        format.html { redirect_to root_path, notice: 'Meeting was successfully updated.' }
+        format.html { redirect_to root_path, flash: {success: 'Meeting was successfully updated.'} } 
         format.json { render :show, status: :ok, location: @meeting }
       else
         format.html { render :edit }
