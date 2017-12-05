@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle main-nav" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="icon-bar black"></span>
+        <span class="icon-bar black"></span>
+        <span class="icon-bar black"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="nav navbar-nav navbar-right">
+        <%= render user_signed_in? ? "layouts/private_navbar" : "layouts/public_navbar" %> 
+      </ul>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+

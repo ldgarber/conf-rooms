@@ -7,21 +7,6 @@
   <%= link_to 'Back', root_path %>
   </div>
 
-  <div>
-    <a data-target="#calendar-toggle" class="btn btn-primary" data-toggle="collapse">Show/Hide Calendar</a>
-    <div id="calendar-toggle" class="collapse">
-      <%= month_calendar events: @meetings do |date, meetings| %> 
-        <%= date.strftime("%d") %>
-
-        <% meetings.each do |meeting| %> 
-          <div class="meeting-room-<%=meeting.room.id%>">
-            <%= meeting.room.name %> 
-            booked by <%= (meeting.user.name != nil) ? meeting.user.name : meeting.user.email %>
-            from <%= meeting.start %> to <%= meeting.end %> 
-          </div> 
-        <% end %> 
-      <% end %> 
-    </div>
-  </div>
+  <%= render "shared/calendar_toggle", meetings: @meetings %> 
 
 </div>
