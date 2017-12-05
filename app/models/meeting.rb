@@ -24,7 +24,6 @@ class Meeting < ApplicationRecord
     end
   end
 
-  # does not work for update yet!!!! 
   def room_cannot_be_booked_for_that_time
     mtgs = Meeting.meetings_in_room(room_id)
     mtgs = remove_self(mtgs)
