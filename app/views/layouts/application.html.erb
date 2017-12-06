@@ -17,12 +17,12 @@
   </head>
 
   <body>
-    <div class="container centered" >
+    <%= render "layouts/header" %>
+    <div class="container centered body-container">
       <!-- flash messages --> 
-      <%= render "layouts/flash_messages" if !flash.empty? %> 
+      <%= flash_messages %>
 
-
-       <%= yield %>
+      <%= yield %>
     </div>
   </body>
 </html>

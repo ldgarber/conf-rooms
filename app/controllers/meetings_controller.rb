@@ -20,10 +20,10 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to root_path, notice: 'Meeting was successfully created.' }
+        format.html { redirect_to root_path, flash: {success: 'Meeting was successfully created.'} }
         format.json { render :show, status: :created, location: @meeting }
       else
-        format.html { render :new }
+        format.html { redirect_to new_meeting_path, flash: {danger: "Unable to create meeting. " + @meeting.errors.full_messages.join('. ')} }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
     end
@@ -34,10 +34,10 @@ class MeetingsController < ApplicationController
   def update
     respond_to do |format|
       if @meeting.update(meeting_params)
-        format.html { redirect_to root_path, notice: 'Meeting was successfully updated.' }
+        format.html { redirect_to root_path, flash: {success: 'Meeting was successfully updated.'} } 
         format.json { render :show, status: :ok, location: @meeting }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_meeting_path, flash: {danger: "Unable to edit meeting. " + @meeting.errors.full_messages.join('. ')} }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
     end
@@ -48,7 +48,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Meeting was successfully removed.' }
+      format.html { redirect_to root_path, flash: {success:'Meeting was successfully removed.'} }
       format.json { head :no_content }
     end
   end
@@ -61,7 +61,7 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:user_id, :room_id, :start_time, :end_time)
+      params.require(:meeting).permit(:user_id, :room_id, :start_time, :end_time, :date)
     end
 
     def require_permission 
