@@ -1,10 +1,10 @@
 <div class="container centered">
   <div>
-  <h1>New Meeting</h1>
+    <h1>New Meeting</h1>
 
-  <%= render 'form', meeting: @meeting %>
+    <%= render 'form', meeting: @meeting %>
 
-  <%= link_to 'Back', root_path %>
+    <%= link_to 'Back', root_path %>
   </div>
 
   <%= render "shared/calendar_toggle", meetings: @meetings %> 

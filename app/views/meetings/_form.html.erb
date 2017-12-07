@@ -13,9 +13,9 @@
 
   <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <div class="field form-check">
+  <div class="field form-check radio-toolbar">
       <%= f.collection_radio_buttons(:room_id, Room.all, :id, :name) do |b| %>
-        <%= b.radio_button + b.label(:class => "radio-inline radio-spacing") %>
+        <%= b.radio_button + b.label %>
       <% end %>
   </div>
 
