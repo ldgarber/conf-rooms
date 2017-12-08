@@ -5,12 +5,18 @@ class Meeting < ApplicationRecord
   validate :room_cannot_be_booked_for_that_time
   validate :end_time_is_later_than_start_time
 
+  before_create :set_summary
+  
   def start 
     convert_time(self.start_time)
   end
 
   def end
     convert_time(self.end_time)
+  end
+
+  def set_summary
+    self.summary = "untitled" if summary.blank?
   end
 
   def convert_time(datetime)
