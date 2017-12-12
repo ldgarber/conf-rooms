@@ -39,9 +39,12 @@ a {
 }
 
 .today-view {
-  padding: 25px; 
+  padding: 20px; 
   background-color: #13a4aa; 
   border-radius: 10px;   
+  h3 {
+    margin: 5px;  
+  }
 }
 
 .meeting-link {
