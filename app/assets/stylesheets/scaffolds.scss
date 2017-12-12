@@ -1,3 +1,7 @@
+$room-1-color: #95d1b4;
+$room-2-color: #fae66f;
+$room-3-color: #58c5d9;
+
 body {
   background-color: #fff;
   color: #333;
@@ -61,15 +65,15 @@ a {
 }
 
 .meeting-room-1, label[for="meeting_room_id_1"] {
-  background-color: #95d1b4;  
+  background-color: $room-1-color;   
 } 
 
 .meeting-room-2, label[for="meeting_room_id_2"] {
-  background-color: #fae66f;  
+  background-color: $room-2-color;  
 }
 
 .meeting-room-3, label[for="meeting_room_id_3"]{
-  background-color: #58c5d9;   
+  background-color: $room-3-color;   
 }
 
 .meeting-div {
