@@ -3,7 +3,7 @@
     <h1>Happy Fun Conference Rooms!</h1>
 
     <!-- today view --> 
-    <div class="centered today-view">
+    <div class="container-fluid centered today-view">
       <% @rooms.each do |room| %>
         <div class="col-md-4 room-listing">
           <h3><%= room.name %></h3>
@@ -19,6 +19,7 @@
 
 
     <%= link_to "BOOK A ROOM", new_meeting_path, class: "btn btn-outline-secondary btn-lg book-room-link" %>
+
   </div>
 </div>
 
