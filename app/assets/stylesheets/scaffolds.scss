@@ -35,8 +35,9 @@ a {
 }
 
 .today-view {
-  padding-bottom: 20px; 
+  padding: 25px; 
   background-color: #13a4aa; 
+  border-radius: 10px;   
 }
 
 .meeting-link {
@@ -72,10 +73,11 @@ a {
 }
 
 .meeting-div {
-  padding: 5px; 
-  margin: 5px; 
+  padding: 10px; 
+  margin: 10px; 
   border-radius: 10px; 
 }
+
 th {
   padding-bottom: 5px;
 }
