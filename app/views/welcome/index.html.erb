@@ -7,11 +7,8 @@
       <% @rooms.each do |room| %>
         <div class="col-md-4 room-listing">
           <h3><%= room.name %></h3>
-          <% @meetings_today.each do |meeting| %>
-            <!--not working yet -->
-            <% if meeting_in_room(meeting, room) %>
-              <%= meeting.summary %></br>
-            <% end %>
+          <% room.meetings_today.each do |meeting| %>
+            <%= meeting.summary %></br>
           <% end %> 
         </div>
       <%end %>

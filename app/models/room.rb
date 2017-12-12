@@ -3,7 +3,7 @@ class Room < ApplicationRecord
 
   TODAYS_DATE = Time.now.in_time_zone("UTC").to_date
 
-  def todays_meetings
+  def meetings_today 
     self.meetings_on_date(TODAYS_DATE)
   end
 
