@@ -12,4 +12,10 @@ module ApplicationHelper
     end
     nil
   end
+
+  def meeting_in_room(meeting, room)
+    return meeting.room_id = room.id
+  end
+
+
 end

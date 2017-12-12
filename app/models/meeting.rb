@@ -55,9 +55,23 @@ class Meeting < ApplicationRecord
     meetings.reject {|meeting| meeting.id == self.id}
   end
 
+  def date_range 
+  end 
+
   #returns array of meetings that belong to specified id  
   def self.meetings_in_room(room_id)
     Meeting.all.select{ |meeting| (meeting.room_id == room_id) }
   end
 
+  def self.in_room?(room_id)
+    return self.room_id == room_id
+  end
+
+  def self.starting_on(date)
+    Meeting.where("DATE(start_time) = ?", date)
+  end
+
+  def self.starting_today
+    Meeting.starting_on(Time.now.in_time_zone("UTC").to_date)
+  end
 end

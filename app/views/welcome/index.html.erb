@@ -1,6 +1,23 @@
 <div class="container">
   <div class="centered">
     <h1>Happy Fun Conference Rooms!</h1>
+
+    <!-- today view --> 
+    <div class="centered today-view">
+      <% @rooms.each do |room| %>
+        <div class="col-md-4 room-listing">
+          <h3><%= room.name %></h3>
+          <% @meetings_today.each do |meeting| %>
+            <!--not working yet -->
+            <% if meeting_in_room(meeting, room) %>
+              <%= meeting.summary %></br>
+            <% end %>
+          <% end %> 
+        </div>
+      <%end %>
+   </div>
+
+
     <%= link_to "BOOK A ROOM", new_meeting_path, class: "btn btn-outline-secondary btn-lg book-room-link" %>
   </div>
 </div>
