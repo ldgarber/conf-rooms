@@ -5,5 +5,9 @@ class WelcomeController < ApplicationController
     @rooms = Room.all
   end
 
+  def display
+    @rooms = Room.all
+  end
+
 end
 

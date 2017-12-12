@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
+    <%= render "layouts/header" unless current_page?(display_path) %>
     <div class="container centered body-container">
       <!-- flash messages --> 
       <%= flash_messages %>
