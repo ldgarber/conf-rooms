@@ -8,7 +8,7 @@
         <div class="col-md-4 room-listing">
           <h3><%= room.name %></h3>
           <% room.meetings_today.each do |meeting| %>
-            <%= meeting.summary %></br>
+            <%= render meeting %> 
           <% end %> 
         </div>
       <%end %>
@@ -26,7 +26,7 @@
   <% meetings.each do |meeting| %> 
     <% if user_signed_in? && (meeting.user == current_user) %> 
       <%= link_to edit_meeting_path(meeting), class: "meeting-link" do %>
-        <div class="meeting-room-<%=meeting.room.id%>">
+        <div class="meeting-room-<%=meeting.room.id%> meeting-div">
            <%= meeting.room.name %> 
            booked by you (<%= (meeting.user.name != nil) ? meeting.user.name : meeting.user.email %>)
            from <%= meeting.start %> to <%= meeting.end %> 
