@@ -6,6 +6,8 @@ class Meeting < ApplicationRecord
   validate :end_time_is_later_than_start_time
 
   before_create :set_summary
+
+  TODAYS_DATE = Time.now.in_time_zone("UTC").to_date
   
   def start 
     convert_time(self.start_time)
@@ -31,7 +33,7 @@ class Meeting < ApplicationRecord
   end
 
   def room_cannot_be_booked_for_that_time
-    mtgs = Meeting.meetings_in_room(room_id)
+    mtgs = Meeting.in_room(room_id)
     mtgs = remove_self(mtgs)
     errors.add(:room_id, "is already booked in this time range")  if any_overlapping_meetings?(mtgs)
   end
@@ -58,20 +60,25 @@ class Meeting < ApplicationRecord
   def date_range 
   end 
 
+  def start_date
+    start_time.to_date
+  end
+
+  def end_date
+    end_time.to_date
+  end
+
   #returns array of meetings that belong to specified id  
-  def self.meetings_in_room(room_id)
+  def self.in_room(room_id)
     Meeting.all.select{ |meeting| (meeting.room_id == room_id) }
   end
 
-  def self.in_room?(room_id)
-    return self.room_id == room_id
-  end
 
   def self.starting_on(date)
     Meeting.where("DATE(start_time) = ?", date)
   end
 
   def self.starting_today
-    Meeting.starting_on(Time.now.in_time_zone("UTC").to_date)
+    Meeting.starting_on(TODAYS_DATE)
   end
 end
