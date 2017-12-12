@@ -60,15 +60,15 @@ a {
   margin: 20px; 
 }
 
-.meeting-room-1 {
+.meeting-room-1, label[for="meeting_room_id_1"] {
   background-color: #95d1b4;  
 } 
 
-.meeting-room-2 {
+.meeting-room-2, label[for="meeting_room_id_2"] {
   background-color: #fae66f;  
 }
 
-.meeting-room-3 {
+.meeting-room-3, label[for="meeting_room_id_3"]{
   background-color: #58c5d9;   
 }
 
@@ -151,7 +151,6 @@ label {
     border-radius: 10px; 
     cursor: pointer; 
     font-weight: normal;  
-    background-color: #ddd; 
     &:hover {
       background-color: #bbb;  
     }
