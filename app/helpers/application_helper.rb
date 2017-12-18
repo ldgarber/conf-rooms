@@ -1,4 +1,6 @@
 module ApplicationHelper
+  TODAYS_DATE = Time.now.in_time_zone("UTC").to_date
+ 
   def bootstrap_class_for(flash_type)
     { success: "success", error: "danger", alert: "warning", notice: "info" }[flash_type.to_sym] || flash_type.to_s
   end
@@ -17,5 +19,8 @@ module ApplicationHelper
     return meeting.room_id = room.id
   end
 
+  def any_meetings_today? 
+    !Meeting.starting_today.empty?
+  end
 
 end

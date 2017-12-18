@@ -1,5 +1,6 @@
 <div class="col-md-4 room-listing">
   <h3><%= room.name %></h3>
+  <%= "No meetings today" if room.meetings_today.empty? %> 
   <% room.meetings_today.each do |meeting| %>
     <%= render meeting %> 
   <% end %> 
