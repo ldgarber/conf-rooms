@@ -14,3 +14,4 @@ couch_room.update(capacity: "2-4 people")
 
 conference_room = Room.find_or_create_by(name: "Conference Room")
 conference_room.update(capacity: "4-10 people")
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
