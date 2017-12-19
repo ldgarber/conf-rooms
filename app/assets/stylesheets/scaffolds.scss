@@ -64,6 +64,13 @@ a {
 .book-room-link {
   color: black; 
   margin: 20px; 
+  &:hover {
+    color: #fff; 
+    background: #eee; 
+  }
+  &:visited {
+    color: black;  
+  }
 }
 
 .meeting-room-1, label[for="meeting_room_id_1"] {
