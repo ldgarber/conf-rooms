@@ -40,7 +40,6 @@ a {
 
 .today-view {
   padding: 20px; 
-  background-color: #13a4aa; 
   border-radius: 10px;   
   h3 {
     margin: 5px;  
@@ -165,6 +164,16 @@ label {
   input[type="radio"]:checked+label {
     background-color: #aaa;  
   }
-
 }
 
+.top-main {
+  background-image: url("/images/today-bg.jpg"); 
+  padding: 30px; 
+  border-radius: 10px; 
+}
+
+.top-inner {
+  background: rgba(250, 250, 250, 0.4); 
+  padding: 20px; 
+  border-radius: 10px; 
+}

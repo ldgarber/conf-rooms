@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="centered">
-    <h1>Happy Fun Conference Rooms!</h1>
+  <div class="centered top-main"> 
+    <div class="top-inner">
+      <h1>Happy Fun Conference Rooms!</h1>
 
-    <!-- today view --> 
-    <%= render "shared/today", rooms: @rooms %>
+      <!-- today view --> 
+      <%= render "shared/today", rooms: @rooms %>
 
-    <%= link_to "BOOK A ROOM", new_meeting_path, class: "btn btn-outline-secondary btn-lg book-room-link" %>
-
+      <%= link_to "BOOK A ROOM", new_meeting_path, class: "btn btn-outline-secondary btn-lg book-room-link" %>
+    </div>
   </div>
 </div>
 
