@@ -67,4 +67,5 @@ gem 'cancan'
 gem 'draper' 
 gem 'pundit' 
 
-
+#figaro for keys
+gem 'figaro' 
