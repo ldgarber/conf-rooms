@@ -29,21 +29,6 @@ ActiveRecord::Schema.define(version: 20171218204341) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
 
-  create_table "acts_as_bookable_bookings", force: :cascade do |t|
-    t.string   "bookable_type"
-    t.integer  "bookable_id"
-    t.string   "booker_type"
-    t.integer  "booker_id"
-    t.integer  "amount"
-    t.text     "schedule"
-    t.datetime "time_start"
-    t.datetime "time_end"
-    t.datetime "time"
-    t.datetime "created_at"
-    t.index ["bookable_type", "bookable_id"], name: "index_acts_as_bookable_bookings_bookable", using: :btree
-    t.index ["booker_type", "booker_id"], name: "index_acts_as_bookable_bookings_booker", using: :btree
-  end
-
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
